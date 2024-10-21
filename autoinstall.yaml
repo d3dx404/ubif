@@ -1,0 +1,26 @@
+#cloud-config
+autoinstall:
+  version: 1
+  identity:
+    hostname: aether
+    username: taylor
+    password: $6$rounds=4096$saltsalt$encryptedpasswordhash
+  ssh:
+    install-server: true
+    allow-pw: true
+    allow-passwords: true
+  package_update: true
+  packages:
+    - git
+    - python3
+    - python3-pip
+    - build-essential
+    - curl
+    - vim
+    - htop
+    - net-tools
+    - docker.io
+  late-commands:
+    - echo "Hello, Taylor! Aether is ready for action."
+    - git clone https://github.com/your-repo/bb-ai.git /home/taylor/bb-ai
+    - pip3 install -r /home/taylor/bb-ai/requirements.txt
